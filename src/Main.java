@@ -1,16 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        String cuisine = "ITALIAN";
-        Restaurant restaurant;
+        CuisineFactory factory = new ItalianFactory();
+        Combo combo = new Combo(factory);
 
-        if (cuisine.equals("ITALIAN")) {
-            restaurant = new ItalianRestaurant();
-        } else if (cuisine.equals("JAPANESE")) {
-            restaurant = new JapaneseRestaurant();
-        } else {
-            restaurant = new KazakhRestaurant();
-        }
-
-        System.out.println(restaurant.serveMainDish());
+        System.out.println("Cuisine: " + combo.getCuisine());
+        System.out.println("Total price: " + combo.getTotalPrice());
+        System.out.println("Cooking time: " + combo.getTotalCookTime() + " min");
     }
 }

@@ -32,3 +32,10 @@ Restaurant is the Creator. It has abstract method createMainDish(). Each concret
 Restaurant also has real business logic in serveMainDish(): it adds 10 percent service fee and 5 minutes waiting time. This logic is the same for all restaurants and works only with MainDish interface.
 
 Why it is Factory Method and not static factory: in Factory Method the creation is decided by subclasses through inheritance, and the parent class uses the product in its own logic. A static factory is one method with if/else inside, and adding a new cuisine means changing that method. Here I only add a new subclass.
+Part C: Abstract Factory
+
+CuisineFactory is the Abstract Factory. It has three methods: createMainDish(), createDrink() and createDessert(). ItalianFactory, JapaneseFactory and KazakhFactory each create products from one cuisine only. So every factory makes a compatible family of products.
+
+Part D: Compatibility rule
+
+Combo class has only one constructor and it takes CuisineFactory. It does not take dish, drink and dessert separately. So it is impossible to make Combo with Pizza, Kumis and Mochi. The design itself prevents the wrong combination, I do not need if and throw for this. Every product also has getCuisine() method, so tests can check that all three products in Combo have the same cuisine.
