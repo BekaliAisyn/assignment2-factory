@@ -110,4 +110,22 @@ public class OrderServiceTest {
         OrderService service = new OrderService(factory);
         assertDoesNotThrow(() -> service.createReceipt(3));
     }
+
+    @Test
+    void mexicanComboHasCorrectProducts() {
+        Combo combo = new Combo(new MexicanFactory());
+        assertEquals("Taco + Horchata + Churros", combo.describe());
+    }
+
+    @Test
+    void mexicanFactoryCreatesMexicanMainDish() {
+        CuisineFactory factory = new MexicanFactory();
+        assertTrue(factory.createMainDish() instanceof Taco);
+    }
+
+    @Test
+    void runtimeSelectionWorksForMexican() {
+        CuisineFactory factory = CuisineFactories.forCuisine(Cuisine.MEXICAN);
+        assertTrue(factory instanceof MexicanFactory);
+    }
 }

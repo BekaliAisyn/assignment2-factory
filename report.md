@@ -64,3 +64,19 @@ I wrote 16 tests with JUnit. They check:
 Part H: UML diagram
 
 Diagram is in docs/factory-uml.png. It shows two labeled parts: Factory method part (Restaurant creator with 3 concrete creators, all working with MainDish) and Abstract factory part (CuisineFactory with 3 concrete factories, creating all three product types). Both parts connect down to the shared product interfaces MainDish, Drink and Dessert, each having 3 concrete classes.
+Part G: Adding a fourth product family (Mexican)
+
+Files I created:
+1. Taco.java (new MainDish)
+2. Horchata.java (new Drink)
+3. Churros.java (new Dessert)
+4. MexicanFactory.java (new concrete factory)
+
+Files I changed:
+1. Cuisine.java - added MEXICAN to the enum
+2. CuisineFactories.java - added one line to register MexicanFactory
+
+Files I did NOT change:
+Combo.java, OrderService.java, Main.java, CuisineFactory.java interface, and all Factory Method classes (Restaurant and its subclasses) stayed exactly the same.
+
+This shows the Open/Closed Principle: I added new behavior by creating new classes, without modifying the existing tested code for Italian, Japanese and Kazakh cuisines. Only 2 existing files needed a one-line change each, and both are configuration, not business logic.

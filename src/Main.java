@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        String cuisineName = "ITALIAN";
+        String cuisineName = "MEXICAN";
         for (String arg : args) {
             if (arg.startsWith("cuisine=")) {
                 cuisineName = arg.substring("cuisine=".length());

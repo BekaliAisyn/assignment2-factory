@@ -8,6 +8,7 @@ public class CuisineFactories {
         FACTORIES.put(Cuisine.ITALIAN, new ItalianFactory());
         FACTORIES.put(Cuisine.JAPANESE, new JapaneseFactory());
         FACTORIES.put(Cuisine.KAZAKH, new KazakhFactory());
+        FACTORIES.put(Cuisine.MEXICAN, new MexicanFactory());
     }
 
     public static CuisineFactory forCuisine(Cuisine cuisine) {

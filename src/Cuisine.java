@@ -1,3 +1,3 @@
 public enum Cuisine {
-    ITALIAN, JAPANESE, KAZAKH
+    ITALIAN, JAPANESE, KAZAKH, MEXICAN
 }
