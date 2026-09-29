@@ -49,3 +49,18 @@ OrderService has three operations and they all use Combo, which has MainDish, Dr
 1. calculateBill(guests): price of all combos, with 10 percent discount for 4 or more guests.
 2. estimateReadyTime(): kitchen cooks dish, drink and dessert at the same time, so ready time is the longest cook time of the three.
 3. createReceipt(guests): receipt with cuisine, names of all three products, bill and ready time.
+
+Part I: Tests
+
+I wrote 16 tests with JUnit. They check:
+1-3. Each cuisine factory creates the correct combo (Italian, Japanese, Kazakh).
+4-6. Each concrete factory creates the correct concrete product type (instanceof check).
+7-8. All products inside one combo have the same cuisine (compatibility check).
+9-10. Runtime factory selection works, and throws exception for unknown cuisine.
+11-13. Business logic: bill for one guest, discount for 4+ guests, exception for zero guests.
+14. Ready time equals the longest cook time among the three products.
+    15-16. Receipt contains correct data, and client code works only through CuisineFactory and OrderService, never touching concrete product classes directly.
+
+Part H: UML diagram
+
+Diagram is in docs/factory-uml.png. It shows two labeled parts: Factory method part (Restaurant creator with 3 concrete creators, all working with MainDish) and Abstract factory part (CuisineFactory with 3 concrete factories, creating all three product types). Both parts connect down to the shared product interfaces MainDish, Drink and Dessert, each having 3 concrete classes.
