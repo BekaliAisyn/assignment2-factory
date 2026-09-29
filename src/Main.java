@@ -1,10 +1,16 @@
 public class Main {
     public static void main(String[] args) {
-        CuisineFactory factory = new ItalianFactory();
-        Combo combo = new Combo(factory);
+        String cuisineName = "ITALIAN";
+        for (String arg : args) {
+            if (arg.startsWith("cuisine=")) {
+                cuisineName = arg.substring("cuisine=".length());
+            }
+        }
 
-        System.out.println("Cuisine: " + combo.getCuisine());
-        System.out.println("Total price: " + combo.getTotalPrice());
-        System.out.println("Cooking time: " + combo.getTotalCookTime() + " min");
+        Cuisine cuisine = Cuisine.valueOf(cuisineName.toUpperCase());
+        CuisineFactory factory = CuisineFactories.forCuisine(cuisine);
+        OrderService service = new OrderService(factory);
+
+        System.out.println(service.createReceipt(2));
     }
 }

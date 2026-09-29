@@ -39,3 +39,13 @@ CuisineFactory is the Abstract Factory. It has three methods: createMainDish(), 
 Part D: Compatibility rule
 
 Combo class has only one constructor and it takes CuisineFactory. It does not take dish, drink and dessert separately. So it is impossible to make Combo with Pizza, Kumis and Mochi. The design itself prevents the wrong combination, I do not need if and throw for this. Every product also has getCuisine() method, so tests can check that all three products in Combo have the same cuisine.
+Part E: Runtime factory selection
+
+The cuisine comes from command-line argument, for example cuisine=JAPANESE. Main reads this argument and asks CuisineFactories to give the right factory. The line new ItalianFactory() exists only one time, inside CuisineFactories. After that, OrderService gets only CuisineFactory interface and does not know which cuisine is used.
+
+Part F: Business scenario
+
+OrderService has three operations and they all use Combo, which has MainDish, Drink and Dessert together.
+1. calculateBill(guests): price of all combos, with 10 percent discount for 4 or more guests.
+2. estimateReadyTime(): kitchen cooks dish, drink and dessert at the same time, so ready time is the longest cook time of the three.
+3. createReceipt(guests): receipt with cuisine, names of all three products, bill and ready time.

@@ -17,6 +17,15 @@ public class Combo {
         return mainDish.getCookTime() + drink.getCookTime() + dessert.getCookTime();
     }
 
+    public int getReadyTime() {
+        return Math.max(mainDish.getCookTime(),
+                Math.max(drink.getCookTime(), dessert.getCookTime()));
+    }
+
+    public String describe() {
+        return mainDish.getName() + " + " + drink.getName() + " + " + dessert.getName();
+    }
+
     public Cuisine getCuisine() {
         return mainDish.getCuisine();
     }
